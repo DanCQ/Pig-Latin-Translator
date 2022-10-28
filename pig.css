@@ -1,0 +1,9 @@
+body {
+    background-color: lavenderblush;
+    display:flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+
+}
