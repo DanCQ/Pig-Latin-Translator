@@ -1,11 +1,12 @@
 # Pig-Latin-Translator
 Pig Latin Translator
 
+*UnDer ConSTruCtioN* <br>
 <a href="https://pig-latin-translator.pages.dev/">Pig Latin Translator</a>
 
 Something to play around with. <br>
 A website to convert words into Pig Latin. <br>
-Eventully, I'll let the user translate sentences.
+Eventully, I'll let the users translate sentences.
 
 Pig Latin is a way of altering English Words. The rules are as follows:
 
