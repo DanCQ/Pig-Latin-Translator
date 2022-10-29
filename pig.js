@@ -10,9 +10,11 @@ function pigLatin(str) {
     let consonant = /^([^aeiou]+)(\w+)$/gi; //doesn't start with a vowel, followed by other characters
   
     if(vowel.test(str) ) {
-      word = str.replace(vowel,"$1$2way"); //if word starts /w a vowel, adds "way" at the end
+      word = str[0].toUpperCase()+str.slice(1); //makes new 1st letter uppercase, adds rest of string
+      word = word.replace(vowel,"$1$2way"); //if word starts /w a vowel, adds "way" at the end
     } else if (novowel.test(str)) {
-      word = str.replace(novowel, "$1$2ay"); //if word doesn't start or contain any vowels, adds "ay" at end
+      word = str[0].toUpperCase()+str.slice(1); //makes new 1st letter uppercase, adds rest of string
+      word = word.replace(novowel, "$1$2ay"); //if word doesn't start or contain any vowels, adds "ay" at end
     } else if (consonant.test(str)) { //if word starts with a consonant, and contains vowels
       word = str[0].toLowerCase()+str.slice(1); //makes 1st consonant lowercase, adds rest of string
       word = word.replace(consonant,"$2$1ay"); //sends 1st consonant to the end, and adds "ay" to the end
