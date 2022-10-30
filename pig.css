@@ -1,4 +1,4 @@
-** {
+** { /* useful while building */
     border:1px solid black;
 }
 
@@ -42,10 +42,11 @@ main {
     border-radius: 5px;
     color:white;
     font-family: "chalkduster" ,"Papyrus";
-    height:80px;
+    min-height:80px;
+    height:auto;
     margin: 15px 0;
     padding:10px;
-    text-align: center;
+    text-align: left;
     width:90%;
 }
 
@@ -58,8 +59,7 @@ textarea {
     height:80px;
     margin: 15px 0;
     padding:10px;
-
-    text-align: center;
+    text-align: left;
     width:90%;
 }
 
