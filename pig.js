@@ -22,23 +22,23 @@ function pigLatin(str) {
     if(novowel.test(words[i])) {
       words[i] = words[i].replace(novowel, "$1ay"); //if word doesn't start or contain any vowels, adds "ay" at end
     } else if (consonant.test(words[i])) { //if word starts with a consonant, and contains vowels
-      words[i] = words[i].replace(consonant, "$2$1ay"); //sends 1st consonant to the end, and adds "ay" to the end
+      words[i] = words[i][0].toLowerCase()+words[i].slice(1);
+      words[i] = words[i].replace(consonant, "$2$1ay"); //sends 1st pattern to the end, and adds "ay" to the end
+      words[i] = i == 0 ? words[i][0].toUpperCase()+words[i].slice(1) : words[i]; //capitalizes 1st letter only if word is 1st in the sentence
     }
   }
 
+
   words = words.join(" ");
 
-/*
-  word = str[0].toLowerCase()+str.slice(1); //makes 1st consonant lowercase, adds rest of string
-  word = word[1].toUpperCase()+word.slice(2); //makes new 1st letter uppercase, adds rest of string
-*/
-    
   pigLatinText.innerHTML = words; 
-
-  if(pigLatinText.innerHTML == "") {
+  
   //if user deletes all characters, initial message returns
+  if(pigLatinText.innerHTML == "") {
+
     pigLatinText.innerHTML = "Pig Latin here...";
   }
+
 }
 
 
