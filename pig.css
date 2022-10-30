@@ -1,3 +1,7 @@
+** {
+    border:1px solid black;
+}
+
 a {
     text-decoration: none;
 }
@@ -22,9 +26,14 @@ footer a {
     color:salmon;
 }
 
+h1 {
+    padding:10px;
+}
+
 main {
     color:inherit;
     min-height:100vh;
+    padding:10px;
 }
 
 .pig-latin-text {
@@ -34,10 +43,10 @@ main {
     color:white;
     font-family: "chalkduster" ,"Papyrus";
     height:80px;
-    margin:35px 0px;
+    margin: 15px 0;
     padding:10px;
     text-align: center;
-    width:100%;
+    width:90%;
 }
 
 textarea {
@@ -47,12 +56,20 @@ textarea {
     font-family: "chalkduster" ,"Papyrus";
     font-size: 16px;
     height:80px;
+    margin: 15px 0;
     padding:10px;
+
     text-align: center;
-    width:100%;
+    width:90%;
 }
 
 textarea:active {
     border: 1px solid black;
 }
 
+.box {
+    display:flex;
+        align-items: center;
+        justify-content: center;
+    
+}
