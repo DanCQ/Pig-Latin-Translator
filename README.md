@@ -1,10 +1,9 @@
 # Pig-Latin-Translator
 
---I'm working on letting the users translate more than one word.--
-
 <a href="https://pig-latin-translator.pages.dev/">Pig Latin Translator</a>
 
 A website to convert words into Pig Latin. <br>
+I'm using regular expressions to match the words.
 
 Pig Latin is a way of altering English Words. The rules are as follows:
 
