@@ -23,7 +23,7 @@ body {
 
 footer {
     font-family: "luminari", "Academy Engraved Let", "zapfino";
-    margin: 25px 0;
+    margin:2.5em 0;
 }
 
 footer a {
@@ -43,6 +43,7 @@ h1 {
 }
 
 h3 {
+    margin:2em 0;
     padding:10px;
 }
 
@@ -51,7 +52,7 @@ header {
         align-items: center;
         justify-content: center;
     width:auto;
-    margin-bottom:5%;
+    margin:3em 0;
 }
 
 main {
@@ -109,14 +110,14 @@ textarea {
 }
 
 
-@media (max-width:500px) {
+@media (max-width:600px) {
 
     body {
         margin:0;
     }
 
-    h1 {
-        font-size:30px;
+    footer {
+        margin:3em 0;
     }
 
 }
