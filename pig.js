@@ -1,5 +1,11 @@
 let englishText = document.querySelector(".english-text");
 let pigLatinText = document.querySelector(".pig-latin-text");
+let oink = new Audio("assets/oink.mp3");
+
+
+window.onclick = function() {
+  oink.play();
+}
 
 
 function pigLatin(str) {
@@ -28,7 +34,6 @@ function pigLatin(str) {
     }
   }
 
-
   words = words.join(" ");
 
   pigLatinText.innerHTML = words; 
@@ -38,7 +43,7 @@ function pigLatin(str) {
 
     pigLatinText.innerHTML = "Pig Latin here...";
   }
-
+  
 }
 
 
