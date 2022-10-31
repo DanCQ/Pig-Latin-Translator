@@ -3,6 +3,10 @@ a {
 }
 
 body {
+    background-image: url("assets/pigs.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-color: mistyrose;
     display:flex;
         align-items: center;
@@ -16,20 +20,30 @@ body {
 footer {
     font-family: "luminari", "Academy Engraved Let", "zapfino";
     margin-top: 50px;
+    opacity: 0.8;
 }
 
 footer a {
+    background-color:lavenderblush;
+    border-radius: 10px;
     color:salmon;
+    padding:5px;
+    text-shadow: 0px 0px 1px black;
 }
 
 h1 {
     padding:10px;
+    color:white;
+    text-shadow: 0px 0px 4px black;
 }
 
 main {
+    background-color: mistyrose;
+    border-radius: 50px;
     color:inherit;
     min-height:100vh;
     padding:10px;
+    opacity: 0.97;
 }
 
 .pig-latin-text {
