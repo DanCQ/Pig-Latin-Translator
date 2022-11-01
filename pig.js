@@ -66,7 +66,7 @@ function pigLatin(str) {
   }
 
   
-  //catches words with puctuations
+  //transforms words with puctuations
   for(let k = 0; k < words.length; k++) {
     
     //punctuation check test
