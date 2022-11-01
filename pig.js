@@ -10,9 +10,8 @@ window.onclick = function() {
 /*
 I think I need a loop, to count how many special characters there are, store the index of their positions 
 in an unknown number of variables, translate the word, and then place the special characters back where 
-they were. Seems complicated. I'll have to think about how to do that.
-
-I think I need an Object array
+they were. Seems complicated. I think I need an Object array for this.
+Hint: I'm already doing this, but can only handle one special character per word.
 */
 function pigLatin(str) {
     
@@ -22,12 +21,12 @@ function pigLatin(str) {
   let vowel = /^([aeiou][a-z]+)$/gi; //starts with a vowel, followed by other characters
   let novowel = /^([^aeiou][^aeiou]+)$/gi; //doesn't start with a vowel, or have any vowels in the word
   let consonant = /^([^aeiou@"'_.]+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
-
-  let conAnswer = false;
-  let conMatch = "";
+  
+  let conMatch = ""; //to store consonant cluster match
+  let conAnswer = false; //for consonant test
 
   let capital = /^([A-Z])$/; //to target capital letters
-  let answer = false;
+  let capAnswer = false; // for capital letter test
 
   let punctuation = /^([a-z]+|\s?)([^a-z]+)([a-z]+?|\s?)$/ig; //matches special characters attached to a word
   let special = /[^a-z]+/ig; //targets the special character
@@ -39,8 +38,8 @@ function pigLatin(str) {
   //transforms words without punctuation
   for(let i = 0; i < words.length; i++) {
 
-    //without this check only the consonant test would run with special characters at front
-    if(punctuation.test(words[i]) == false) { //couldn't find a fix inside the RegEx, except this
+    //without this check the consonant test would run with special characters at front
+    if(punctuation.test(words[i]) == false) { //couldn't find a fix within RegEx, except this
 
       if(oneVowel.test(words[i])) {
         words[i] = words[i].replace(oneVowel, "$1way"); //if word contains only one vowel
@@ -52,25 +51,26 @@ function pigLatin(str) {
       } else if (consonant.test(words[i])) { //if word starts with a consonant, and contains vowels
      
         if(capital.test(words[i][0])) { //checks to see if 1st letter was capital
-          answer = true;
+          capAnswer = true;
         }
 
         words[i] = words[i][0].toLowerCase()+words[i].slice(1); //alteration moves 1st pattern to the back, so lowecase
         words[i] = words[i].replace(consonant, "$2$1ay"); //sends 1st pattern to the end, and adds "ay" to the end
       
-        if(answer) {  //capitalizes 1st letter of word only if it was capital before alteration
+        if(capAnswer) {  //capitalizes 1st letter of word only if it was capital before alteration
           words[i] = words[i][0].toUpperCase()+words[i].slice(1); 
-          answer = false;
+          capAnswer = false;
         }
       }
     }
   }
 
-
+  
   //catches words with puctuations
   for(let k = 0; k < words.length; k++) {
-     
-    if(punctuation.test(words[k])) {
+    
+    //punctuation check test
+    if(punctuation.test(words[k])) { 
 
       target = words[k].match(special); //stores special character(s)
       position = words[k].indexOf(target); //stores index before alteration of special char
@@ -88,19 +88,19 @@ function pigLatin(str) {
         words[k] = words[k].replace(novowel, "$1ay");
       } else if (consonant.test(words[k])) { 
         
-        conAnswer = true;
+        conAnswer = true; //for later use in positioning test below
 
         if(capital.test(words[k][0])) {  //checks to see if 1st letter was capital
-          answer = true;
+          capAnswer = true;
         }
         
-        conMatch = words[k].replace(consonant, "$1");
+        conMatch = words[k].replace(consonant, "$1"); //store 1st consonant cluster
         words[k] = words[k][0].toLowerCase()+words[k].slice(1);
         words[k] = words[k].replace(consonant, "$2$1ay");
 
-        if(answer) {  //capitalizes 1st letter of word only if it was capital before alteration
+        if(capAnswer) {  //capitalizes 1st letter of word only if it was capital before alteration
           words[k] = words[k][0].toUpperCase()+words[k].slice(1); 
-          answer = false;
+          capAnswer = false;
         }
       }
 
@@ -114,7 +114,7 @@ function pigLatin(str) {
         words[k] = words[k].split(""); //the individual word is split into a single character array
         words[k].splice(position,0,target); //target is placed in its original recorded index
         words[k] = words[k].join(""); //the array is coverted back into a string     
-        conAnswer = false;
+        conAnswer = false; //prevents this section from running if false
       } else {
         words[k] = words[k].split(""); //the individual word is split into a single character array
         words[k].splice(position,0,target); //target is placed in its original recorded index
@@ -122,8 +122,6 @@ function pigLatin(str) {
       }
     }
   }
-
-
 
 
   words = words.join(" "); //the words array is converted back into a string
