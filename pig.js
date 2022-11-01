@@ -15,7 +15,10 @@ function pigLatin(str) {
   let oneVowel = /^([aeiou])$/gi; //contains only one vowel
   let vowel = /^([aeiou][a-z]+)$/gi; //starts with a vowel, followed by other characters
   let novowel = /^([^aeiou][^aeiou]+)$/gi; //doesn't start with a vowel, or have any vowels in the word
-  let consonant = /^([^aeiou@]+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
+  let consonant = /^([^aeiou@"']+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
+
+  let capital = /^([A-Z])$/; //to target capital letters
+  let answer = false;
 
   let punctuation = /^([a-z]+|\s?)([^a-z]+)([a-z]+?|\s?|)$/ig; //matches special characters attached to a word
   let special = /[^a-z]+/ig; //targets the special character
@@ -44,9 +47,19 @@ function pigLatin(str) {
       if(novowel.test(words[k])) {
         words[k] = words[k].replace(novowel, "$1ay");
       } else if (consonant.test(words[k])) { 
+
+        if(capital.test(words[k][0])) {  //checks to see if 1st letter was capital
+          answer = true;
+        }
+
         words[k] = words[k][0].toLowerCase()+words[k].slice(1);
         words[k] = words[k].replace(consonant, "$2$1ay"); 
         words[k] = k == 0 ? words[k][0].toUpperCase()+words[k].slice(1) : words[k]; 
+
+        if(answer) {  //capitalizes 1st letter of word only if it was capital before alteration
+          words[k] = words[k][0].toUpperCase()+words[k].slice(1); 
+          answer = false;
+        }
       }
 
       //punctuation positioning after word alteration
@@ -57,7 +70,7 @@ function pigLatin(str) {
       } else {  
         words[k] = words[k].split(""); //the individual word is split into a single character array
         words[k].splice(position,0,target); //target is placed in its original recorded index
-        words[k] = words[k].join(""); //the array is coverted back into a string
+        words[k] = words[k].join(""); //the array is coverted back into a string     
       }
 
     }
@@ -75,9 +88,19 @@ function pigLatin(str) {
     if(novowel.test(words[i])) {
       words[i] = words[i].replace(novowel, "$1ay"); //if word doesn't start or contain any vowels, adds "ay" at end
     } else if (consonant.test(words[i])) { //if word starts with a consonant, and contains vowels
-      words[i] = words[i][0].toLowerCase()+words[i].slice(1);
+     
+      if(capital.test(words[i][0])) { //checks to see if 1st letter was capital
+        answer = true;
+      }
+
+      words[i] = words[i][0].toLowerCase()+words[i].slice(1); //alteration moves 1st pattern to the back, so lowecase
       words[i] = words[i].replace(consonant, "$2$1ay"); //sends 1st pattern to the end, and adds "ay" to the end
-      words[i] = i == 0 ? words[i][0].toUpperCase()+words[i].slice(1) : words[i]; //capitalizes 1st letter only if word is 1st in the sentence
+      
+      if(answer) {  //capitalizes 1st letter of word only if it was capital before alteration
+        words[i] = words[i][0].toUpperCase()+words[i].slice(1); 
+        answer = false;
+      }
+      
     }
   }
 
