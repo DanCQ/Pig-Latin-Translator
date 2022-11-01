@@ -29,12 +29,13 @@ function pigLatin(str) {
      
     if(punctuation.test(words[k])) {
 
-      target = words[k].match(special);
-      position = words[k].indexOf(target);
-      size = words[k].length - 1;
+      target = words[k].match(special); //stores special character(s)
+      position = words[k].indexOf(target); //stores index before alteration of special char
+      size = words[k].length - 1; //stores length of word
       
-      words[k] = words[k].replace(punctuation, "$1$3");
-      
+      words[k] = words[k].replace(punctuation, "$1$3"); //deletes special chac from word
+
+      //exact rules decribes below in for i loop
       if(oneVowel.test(words[k])) {
         words[k] = words[k].replace(oneVowel, "$1way"); 
       } else if(vowel.test(words[k])) {
@@ -48,14 +49,15 @@ function pigLatin(str) {
         words[k] = k == 0 ? words[k][0].toUpperCase()+words[k].slice(1) : words[k]; 
       }
 
-      if(position == 0) {
+      //punctuation positioning after word alteration
+      if(position == 0) { //if position was at the beginning adds to beginning
         words[k] = target + words[k];
-      } else if(position == size) {
+      } else if(position == size) { //if position was at the end adds to the end
         words[k] = words[k] + target;
-      } else {
-        words[k] = words[k].split("");
-        words[k].splice(position,0,target);
-        words[k] = words[k].join("");
+      } else {  
+        words[k] = words[k].split(""); //the individual word is split into a single character array
+        words[k].splice(position,0,target); //target is placed in its original recorded index
+        words[k] = words[k].join(""); //the array is coverted back into a string
       }
 
     }
@@ -80,9 +82,9 @@ function pigLatin(str) {
   }
 
 
-  words = words.join(" ");
+  words = words.join(" "); //the words array is converted back into a string
 
-  pigLatinText.innerHTML = words; 
+  pigLatinText.innerHTML = words; //displays string in textbox
   
   //if user deletes all characters, initial message returns
   if(pigLatinText.innerHTML == "") {
@@ -95,7 +97,7 @@ function pigLatin(str) {
 
 englishText.addEventListener('input', function() {
   
-  let string = englishText.value;
+  let string = englishText.value; //stores value from english text box
   
   pigLatin(string);
   
