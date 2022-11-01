@@ -20,7 +20,7 @@ function pigLatin(str) {
   let capital = /^([A-Z])$/; //to target capital letters
   let answer = false;
 
-  let punctuation = /^([a-z]+|\s?)([^a-z]+)([a-z]+?|\s?|)$/ig; //matches special characters attached to a word
+  let punctuation = /^([a-z]+|\s?)([^a-z]+)([a-z]+?|\s?)$/ig; //matches special characters attached to a word
   let special = /[^a-z]+/ig; //targets the special character
   let position = 0; //to store special character index
   let size = 0; //to store length of word
