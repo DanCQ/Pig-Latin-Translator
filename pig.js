@@ -1,7 +1,8 @@
-const englishText = document.querySelector(".english-text");
+const body = document.querySelector(".body");
 const h1 = document.querySelector(".h1");
 const main = document.querySelector(".main");
-const oink = new Audio("assets/oink.mp3");
+
+const englishText = document.querySelector(".english-text");
 const pigLatinText = document.querySelector(".pig-latin-text");
 
 
@@ -9,15 +10,19 @@ const pigLatinText = document.querySelector(".pig-latin-text");
 h1.addEventListener("click", function() { 
 
   main.style.opacity = "0.0";
+  body.style.height = "100vh";
 
   setTimeout(function() {
 
+    body.style.height = "auto";
     main.style.opacity = "0.96";
 
   }, 4500); //waits 4.5 seconds to run
 });
  
 window.onclick = function() {
+  
+  const oink = new Audio("assets/oink.mp3");
   
   oink.play(); //plays pig sounds
 }
