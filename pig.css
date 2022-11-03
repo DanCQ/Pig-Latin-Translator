@@ -39,6 +39,7 @@ h1 {
     font-family: "chalkboard", "Papyrus";
     font-size:40px;
     min-width:350px;
+    cursor:pointer;
     text-align: center;
     text-shadow: 0px 0px 4px black;
     width:100%;
