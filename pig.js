@@ -1,10 +1,25 @@
-let englishText = document.querySelector(".english-text");
-let pigLatinText = document.querySelector(".pig-latin-text");
-let oink = new Audio("assets/oink.mp3");
+const englishText = document.querySelector(".english-text");
+const h1 = document.querySelector(".h1");
+const main = document.querySelector(".main");
+const oink = new Audio("assets/oink.mp3");
+const pigLatinText = document.querySelector(".pig-latin-text");
 
+
+//allows viewing of background image on title click 
+h1.addEventListener("click", function() { 
+
+  main.style.opacity = "0.0";
+
+  setTimeout(function() {
+
+    main.style.opacity = "0.96";
+
+  }, 4500); //waits 4.5 seconds to run
+});
+ 
 window.onclick = function() {
   
-  oink.play(); //pig sounds
+  oink.play(); //plays pig sounds
 }
 
 
@@ -195,6 +210,7 @@ function pigLatin(str) {
 }
 
 
+//starts translation as user writes
 englishText.addEventListener('input', function() {
   
   let string = englishText.value; //stores value from english text box
