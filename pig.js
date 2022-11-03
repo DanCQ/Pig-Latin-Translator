@@ -1,35 +1,39 @@
-const body = document.querySelector(".body");
-const h1 = document.querySelector(".h1");
-const main = document.querySelector(".main");
-
 const englishText = document.querySelector(".english-text");
+const h1 = document.querySelector(".h1");
 const pigLatinText = document.querySelector(".pig-latin-text");
 
 
 //allows viewing of background image on title click 
 h1.addEventListener("click", function() { 
+  const body = document.querySelector(".body");
+  const footer = document.querySelector(".footer");
+  const main = document.querySelector(".main");
 
-  main.style.opacity = "0.0";
   body.style.height = "100vh";
+  footer.style.visibility = "hidden";
+  main.style.opacity = "0.0";
 
   setTimeout(function() {
-
+    
     body.style.height = "auto";
+    footer.style.visibility = "visible";
     main.style.opacity = "0.96";
 
   }, 4500); //waits 4.5 seconds to run
 });
- 
+
+//plays pig sounds
 window.onclick = function() {
   
   const oink = new Audio("assets/oink.mp3");
   
-  oink.play(); //plays pig sounds
+  oink.play(); 
 }
 
 
 function pigLatin(str) {
-    
+  
+  
   let words = str.split(" "); //turns user sentence into array separated at blank spaces
 
   let oneVowel = /^([aeiou])$/gi; //contains only one vowel
