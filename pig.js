@@ -10,7 +10,7 @@ h1.addEventListener("click", function() {
   const main = document.querySelector(".main");
 
   body.style.height = "100vh";
-  body.style.width = "100%";
+  body.style.width = "100vw";
   footer.style.visibility = "hidden";
   main.style.opacity = "0.0";
 
