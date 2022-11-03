@@ -4,7 +4,7 @@ let oink = new Audio("assets/oink.mp3");
 
 window.onclick = function() {
   
-  oink.play();
+  oink.play(); //pig sounds
 }
 
 
@@ -24,39 +24,42 @@ function pigLatin(str) {
   let special = /[^a-z]+/gi; //targets the special character
 
 
-  
+  //loop tests every word
   for(let i = 0; i < words.length; i++) {
     
-    words[i] = specialTest(words[i]);
+    words[i] = specialTest(words[i]); //word[i] receives result from function call
 
   }
     
+  
   function specialTest(word) {
 
-    let specialCheck = false;
-    word = word.split("");
+    let specialCheck = false; //resets at function start
+    word = word.split(""); //word is split into single character array
       
     //check each character for special character
     word.forEach(character => {
         
       if(special.test(character) | punctuation.test(character)) { 
           
-        specialCheck = true; //if it exists
+        specialCheck = true; //only if it exists
       } 
     });
 
-    word = word.join("");
+    word = word.join(""); //make array into string
 
+    //assigns function result to word
     if(specialCheck) {
-      word = specialSearch(word);
+      word = specialSearch(word); //if true
     } else {
-      word = notSpecial(word);
+      word = notSpecial(word); //if false
     }
 
-    return word;
+    return word; //sends result to for loop
   }
 
-
+  
+  //transforms words without punctuation
   function notSpecial(word) {
 
     if(oneVowel.test(word)) {
@@ -98,21 +101,22 @@ function pigLatin(str) {
       position: 0
     }; 
 
-    word = word.split("");
+    word = word.split(""); //splits word into single character array
 
+    //search for special character
     word.forEach(index => {
-      if(special.test(index)) {
-        obj.character = index.match(special);
-        obj.position = word.indexOf(index);
-        array.push(obj);
-        word.splice(obj.position,1);
-        index--;
+      if(special.test(index)) { //test
+        obj.character = index.match(special);  //stores the exact character
+        obj.position = word.indexOf(index); //records position in words
+        array.push(obj);  //sends object to array
+        word.splice(obj.position,1); //deletes character from word
+        index--; //backtracks index just in case;
       }
     });
 
-    word = word.join("");
+    word = word.join(""); //joins word array back to string
 
-    //exact rules decribed above in for i loop
+    //exact rules decribed above in notSpecial function
     if(oneVowel.test(word)) {
       word = word.replace(oneVowel, "$1way"); 
     } else if(vowel.test(word)) {
