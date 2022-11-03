@@ -95,22 +95,38 @@ function pigLatin(str) {
     let conAnswer = false; //for consonant test
     let size = word.length - 1; //stores length of word
     let array = [];
-
-    let obj = {
-      character: "",
-      position: 0
-    }; 
+    let obj = {}; 
+    let erase = {};
 
     word = word.split(""); //splits word into single character array
 
     //search for special character
     word.forEach(index => {
+
+      obj = {  //reinitializes object
+        character: "",
+        position: 0
+      }; 
+
       if(special.test(index)) { //test
         obj.character = index.match(special);  //stores the exact character
-        obj.position = word.indexOf(index); //records position in words
+        obj.position = word.indexOf(index); //records position in word
         array.push(obj);  //sends object to array
-        word.splice(obj.position,1); //deletes character from word
-        index--; //backtracks index just in case;
+      }
+    });
+
+    //delete special characters before alteration
+    word.forEach(index => { 
+
+      erase = {  //reinitializes object
+        character: "",
+        position: 0
+      }; 
+
+      if(special.test(index)) { //test
+        erase.character = index.match(special);  //stores the exact character
+        erase.position = word.indexOf(index);  //records position in word
+        word.splice(erase.position,1); //deletes character from word
       }
     });
 
@@ -143,25 +159,27 @@ function pigLatin(str) {
     }
 
     //punctuation positioning after word alteration
-    if(obj.position == 0) { //if position was at the beginning adds to beginning
-      word = obj.character + word;
-    } else if(obj.position == size && obj.character != "\'") { //if position was at the end adds to the end
-      word = word + obj.character;
-    } else if(conAnswer) {
-      obj.position = obj.position - conMatch.length; //corrects for alteration placements
-      word = word.split(""); //the individual word is split into a single character array
-      word.splice(obj.position,0,obj.character); //target is placed in its original recorded index
-      word = word.join(""); //the array is coverted back into a string     
-      conAnswer = false; //prevents this section from running if false
-    } else {
-      word = word.split(""); //the individual word is split into a single character array
-      word.splice(obj.position,0,obj.character); //target is placed in its original recorded index
-      word = word.join(""); //the array is coverted back into a string     
-    }
+    array.forEach(obj => {  //iterates through every special character stored in array
 
+      if(obj.position == 0) { //if position was at the beginning adds to beginning
+        word = obj.character + word;
+      } else if(obj.position == size && obj.character != "\'") { //if position was at the end adds to the end
+        word = word + obj.character;
+      } else if(conAnswer) {
+        obj.position = obj.position - conMatch.length; //corrects for alteration placements
+        word = word.split(""); //the individual word is split into a single character array
+        word.splice(obj.position,0,obj.character); //target is placed in its original recorded index
+        word = word.join(""); //the array is coverted back into a string 
+      } else {
+        word = word.split(""); //the individual word is split into a single character array
+        word.splice(obj.position,0,obj.character); //target is placed in its original recorded index
+        word = word.join(""); //the array is coverted back into a string     
+      }
+    });
+
+    conAnswer = false; //resets if it was true 
     return word;
   }
-
 
 
   words = words.join(" "); //the words array is converted back into a string
