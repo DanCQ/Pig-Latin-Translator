@@ -2,7 +2,6 @@
 
 A website to convert words into Pig Latin. <br>
 I'm using regular expressions to match the words. <br>
-Fully bug tested, will work perfectly.
 
 <a href="https://pig-latin-translator.pages.dev/">Pig Latin Translator</a>
 
