@@ -40,7 +40,7 @@ function pigLatin(str) {
   let oneVowel = /^([aeiou])$/gi; //contains only one vowel
   let vowel = /^([aeiou][a-z]+)$/gi; //starts with a vowel, followed by other characters
   let novowel = /^([^aeiou][^aeiou]+)$/gi; //doesn't start with a vowel, or have any vowels in the word
-  let consonant = /^([^aeiou]+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
+  let consonant = /^([^aeiou"]+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
   let punctuation = /^([a-z]+|\s?)([^a-z]+)([a-z]+?|\s?)$/gi; //catches special characters attached to words
 
   let capital = /^([A-Z])$/; //to target capital letters
@@ -121,7 +121,8 @@ function pigLatin(str) {
     let size = word.length - 1; //stores length of word
     let array = [];
     let count = 0;
-    let obj = {}; 
+    let obj = {};
+    let positionNum = 0;
 
     word = word.split(""); //splits word into single character array
 
@@ -135,10 +136,13 @@ function pigLatin(str) {
 
       if(special.test(index)) { //test
         obj.character = index.match(special);  //stores the exact character
-        obj.position = word.indexOf(index); //records position in word
+        obj.position = positionNum; //records position in word
         array.push(obj);  //sends object to array
       }
+
+      positionNum++;
     });
+
 
     //delete special characters before alteration
     array.forEach(obj => { 
