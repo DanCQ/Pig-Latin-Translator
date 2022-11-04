@@ -121,7 +121,7 @@ function pigLatin(str) {
     let size = word.length - 1; //stores length of word
     let array = [];
     let obj = {}; 
-    let count = "";
+    let count = 0;
 
     word = word.split(""); //splits word into single character array
 
