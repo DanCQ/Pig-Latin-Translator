@@ -35,7 +35,6 @@ window.onclick = function() {
 
 function pigLatin(str) {
   
-  
   let words = str.split(" "); //turns user sentence into array separated at blank spaces
 
   let oneVowel = /^([aeiou])$/gi; //contains only one vowel
@@ -122,7 +121,7 @@ function pigLatin(str) {
     let size = word.length - 1; //stores length of word
     let array = [];
     let obj = {}; 
-    let erase = {};
+    let count = "";
 
     word = word.split(""); //splits word into single character array
 
@@ -142,18 +141,10 @@ function pigLatin(str) {
     });
 
     //delete special characters before alteration
-    word.forEach(index => { 
+    array.forEach(obj => { 
 
-      erase = {  //reinitializes object
-        character: "",
-        position: 0
-      }; 
-
-      if(special.test(index)) { //test
-        erase.character = index.match(special);  //stores the exact character
-        erase.position = word.indexOf(index);  //records position in word
-        word.splice(erase.position,1); //deletes character from word
-      }
+      word.splice(obj.position - count, 1); //deletes character from word
+      count++;
     });
 
     word = word.join(""); //joins word array back to string
