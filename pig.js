@@ -120,8 +120,8 @@ function pigLatin(str) {
     let conAnswer = false; //for consonant test
     let size = word.length - 1; //stores length of word
     let array = [];
-    let obj = {}; 
     let count = 0;
+    let obj = {}; 
 
     word = word.split(""); //splits word into single character array
 
