@@ -40,7 +40,7 @@ function pigLatin(str) {
   let oneVowel = /^([aeiou])$/gi; //contains only one vowel
   let vowel = /^([aeiou][a-z]+)$/gi; //starts with a vowel, followed by other characters
   let novowel = /^([^aeiou][^aeiou]+)$/gi; //doesn't start with a vowel, or have any vowels in the word
-  let consonant = /^([^aeiou"]+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
+  let consonant = /^([^aeiou"']+)([a-z]+)$/gi; //doesn't start with a vowel, followed by other characters
   let punctuation = /^([a-z]+|\s?)([^a-z]+)([a-z]+?|\s?)$/gi; //catches special characters attached to words
 
   let capital = /^([A-Z])$/; //to target capital letters
