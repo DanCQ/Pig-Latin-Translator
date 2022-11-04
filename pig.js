@@ -1,6 +1,7 @@
 const englishText = document.querySelector(".english-text");
-const h1 = document.querySelector(".h1");
 const pigLatinText = document.querySelector(".pig-latin-text");
+const h1 = document.querySelector(".h1");
+const oink = new Audio("assets/oink.mp3");
 
 
 //allows viewing of background image on title click 
@@ -24,12 +25,12 @@ h1.addEventListener("click", function() {
   }, 4500); //waits 4.5 seconds to run
 });
 
+
 //plays pig sounds
 window.onclick = function() {
   
-  const oink = new Audio("assets/oink.mp3");
-  
-  oink.play(); 
+  oink.play();
+
 }
 
 
