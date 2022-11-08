@@ -123,7 +123,6 @@ function pigLatin(str) {
     let array = [];
     let count = 0;
     let obj = {};
-    let positionNum = 0;
 
     word = word.split(""); //splits word into single character array
 
@@ -137,11 +136,10 @@ function pigLatin(str) {
 
       if(special.test(index)) { //test
         obj.character = index.match(special);  //stores the exact character
-        obj.position = positionNum; //records position in word
+        obj.position = count; //records position in word
         array.push(obj);  //sends object to array
       }
-
-      positionNum++;
+      count++;
     });
 
 
@@ -149,7 +147,6 @@ function pigLatin(str) {
     array.forEach(obj => { 
 
       word.splice(obj.position - count, 1); //deletes character from word
-      count++;
     });
 
     word = word.join(""); //joins word array back to string
