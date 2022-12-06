@@ -110,6 +110,10 @@ textarea {
     text-indent:1em;
 }
 
+textarea:focus {
+    outline:none !important;
+}
+
 
 @media (max-width:600px) {
 
