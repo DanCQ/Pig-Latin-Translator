@@ -66,7 +66,7 @@ function pigLatin(str) {
     //check each character for special character
     word.forEach(character => {
         
-      if(special.test(character) | punctuation.test(character)) { 
+      if(special.test(character) || punctuation.test(character)) { 
           
         specialCheck = true; //only if it exists
       } 
