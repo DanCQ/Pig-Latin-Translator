@@ -203,12 +203,12 @@ function pigLatin(str) {
 
   words = words.join(" "); //the words array is converted back into a string
 
-  pigLatinText.innerHTML = words; //displays string in textbox
+  pigLatinText.textContent = words; //displays string in textbox
   
   //if user deletes all characters, initial message returns
-  if(pigLatinText.innerHTML == "") {
+  if(pigLatinText.textContent == "") {
 
-    pigLatinText.innerHTML = "Pig Latin here...";
+    pigLatinText.textContent = "Pig Latin here...";
   }
 
 }
