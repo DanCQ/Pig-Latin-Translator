@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="UTF-8" >
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +13,16 @@
 
         <link rel="stylesheet" type="text/css" href="pig.css" />
 
+        <!-- defer loads html first then JS -->
+        <script defer type="text/javascript" src="pig.js"></script>
+
         <title>Pig Latin Translator</title>
     </head>
 
     <body class="body">
 
         <header>
+
             <h1 class="h1">
                 Pig Latin Translator
             </h1>
@@ -54,7 +59,7 @@
                 <textarea class="english-text" placeholder="English here..."></textarea>
             
             </div>
-            
+
         </main>
 
         <footer class="footer">
@@ -66,6 +71,6 @@
 
         </footer>
 
-        <script type="text/javascript" src="pig.js"></script>
     </body>
+
 </html>
